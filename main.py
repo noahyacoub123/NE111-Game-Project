@@ -11,4 +11,22 @@ def gameboard_drawing(board):
     print('_______')
     print(board[1]) + '|' + print(board[2]) + '|' + print(board[3]) + '|' + print(board[4])
 
+def getPlayerMove(board):
+    move = ''
+    while move not in '1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16'.split() or not isSpaceFree(board,int(move)):
+        print("What is your next move? (1-16)")
+        move = input()
+    return int(move)
+
+def chooseRandomMoveFromList(board,movesList):
+    possibleMoves =[]
+    for i in movesList:
+        if isSpaceFree(board, i):
+            possibleMoves.append(i)
+
+    if len(possibleMoves)!= 0:
+        return random.choice(possibleMoves)
+    else:
+        return None
+
 
