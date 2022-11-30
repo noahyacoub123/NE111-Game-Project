@@ -1,7 +1,7 @@
 # Initials for who did what, Edward Hong as EH, Alden Panicker as AP, and Noah Yacoub as NY -NY
 import pygame  #importing the pygame module -NY
 import random  #Importing the random module -NY
-def gameboard_drawing(board):
+def drawBoard(board):
     #This function will 'draw' the game board as a list of 16 (4x4) instead of the usual 9 (3x3) -NY
     #this function takes a list 'board' with 16 strings that correspond to a four by four grid and prints it, including dividers, to create a visual board drawing for the tictactoe board -AP
     print(board[13]) + '|' + print(board[14]) +'|' + print(board[15]) + '|' + print(board[16])
