@@ -19,7 +19,7 @@ def inputPlayerLetter():
             return ['O', 'X']
 def whoGoesFirst():
     if random.randint(0,1) == 0:
-        retirn 'computer'
+        return 'computer'
     else:
         return 'player'
 def makeMove(board,letter,move):
