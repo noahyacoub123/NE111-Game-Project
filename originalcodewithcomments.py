@@ -82,9 +82,9 @@ def getComputerMove(board, computerLetter):
     move = chooseRandomMoveFromList(board, [1, 3, 7, 9])
     if move!= None:
         return move
-     if isSpaceFree(board, 5):
-         return 5
-     return chooseRandomMoveFromList(board, [2, 4, 6, 8])
+        if isSpaceFree(board, 5):
+            return 5
+    return chooseRandomMoveFromList(board, [2, 4, 6, 8])
 
 def isBoardFull(board):
     return False
