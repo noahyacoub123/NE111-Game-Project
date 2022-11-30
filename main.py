@@ -42,11 +42,6 @@ def InputPlayerLetter():
             return ["O",
                     "X"]  # Players letter will be shown as the first index and the computer will be the second
 
-def getComputerMove(board, computerLetter): #Verifies that the players chosen letter will be the opposite of the computer -NY
-    if computerLetter == "X":
-        playerLetter == "O"
-    else:
-        playerLetter == "X"
 
 def getPlayerMove(board):
     move = ''
@@ -70,20 +65,25 @@ def isWinner(bo, le): #Checks if the player or computer has placed three X's or 
     return ((bo[1] == le and bo[2] == le and bo[3] == le) or (bo[2] == le and bo[3] == le and bo[4] == le) or (bo[5] == le and bo[6] == le and bo[7] == le) or (bo[6] == le and bo[7] == le and bo[8] == le) or (bo[9] == le and bo[10] == le and bo[11] == le) or (bo[10] == le and bo[11] == le and bo[12] == le) or (bo[13] == le and bo[14] == le and bo[15] == le) or (bo[14] == le and bo[15] == le and bo[16] == le) or (bo[1] == le and bo[5] == le and bo[9] == le) or (bo[5] == le and bo[9] == le and bo[13] == le) or (bo[2] == le and bo[6] == le and bo[10] == le) or (bo[6] == le and bo[10] == le and bo[14] == le) or (bo[3] == le and bo[7] == le and bo[11] == le) or (bo[7] == le and bo[11] == le and bo[15] == le) or (bo[4] == le and bo[8] == le and bo[12] == le) or (bo[8] == le and bo[12] == le and bo[16] == le) or (bo[3] == le and bo[6] == le and bo[9] == le) or (bo[4] == le and bo[7] == le and bo[10] == le) or (bo[7] == le and bo[10] == le and bo[13] == le) or (bo[8] == le and bo[11] == le and bo[14] == le) or (bo[2] == le and bo[7] == le and bo[12] == le) or (bo[1] == le and bo[6] == le and bo[11] == le) or (bo[6] == le and bo[11] == le and bo[16] == le) or (bo[5] == le and bo[10] == le and bo[15] == le))
 
 #Now it's time to code the artificial intelligence for our game, which will be split up in sections among the three of us -NY
+def getComputerMove(board, computerLetter): #Verifies that the players chosen letter will be the opposite of the computer -NY
+    if computerLetter == "X":
+        playerLetter == "O"
+    else:
+        playerLetter == "X"
 
-for i in range(1, 17):
-    boardCopy = getBoardCopy(board)
-    if isSpaceFree(boardCopy, i):
-        makeMove(boardCopy, i)
-        if isWinner(boardCopy, playerLetter):
-            return i
-move = chooseRandomMoveFromList(board, [1, 4, 13, 16])
-if move != None:
-    return move
+    for i in range(1, 17):
+        boardCopy = getBoardCopy(board)
+        if isSpaceFree(boardCopy, i):
+            makeMove(boardCopy, i)
+            if isWinner(boardCopy, playerLetter):
+                return i
+    move = chooseRandomMoveFromList(board, [1, 4, 13, 16])
+    if move != None:
+        return move
 
-#No center so cannot have computer put X or O there
+    #No center so cannot have computer put X or O there
 
-return chooseRandomMoveFromList(board, [2, 3, 5, 9, 14, 15, 8, 12, 6, 7, 10, 11])
+    return chooseRandomMoveFromList(board, [2, 3, 5, 9, 14, 15, 8, 12, 6, 7, 10, 11])
 
 def isBoardFull(board):
     for i in range(1, 17):
@@ -95,7 +95,7 @@ print("Welcome to Tic-Tac-Toe, Player!")
 
 while True:
     theBoard = ['']*10
-    playerLetter, computerLetter = inputPlayerletter()
+    playerLetter, computerLetter = inputPlayerLetter()
     turn = whoGoesFirst()
     print("The" + turn + "will go first!")
     gameIsPlaying = True
