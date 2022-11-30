@@ -15,7 +15,7 @@ def InputPlayerLetter():
     #This function will let the player choose which letter they want to be in the game, then choosing the computers letter based on that
 
     letter = "" #Initializing the letter variable
-    while not (letter == "X" or letter == "O"):
+    while not (letter == 'X' or letter == 'O'):
         print("Hello player, do you want to be X or O? ")
         letter = input().upper() #making sure that the letter chosen will be an upper case letter for simplicity
         if letter == "X":

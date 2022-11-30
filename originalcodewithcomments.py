@@ -9,14 +9,14 @@ def drawBoard(board):
     print(board[1] + '|' + board[2] + '|' + board[3])
 
 def inputPlayerLetter():
-    letter = ""
+    letter = ''
     while not (letter == 'X' or letter == 'O'):
         print('Do you want to be X or O?')
         letter = input().upper()
-        if letter == 'X':
-            return ['X', 'O']
-        else:
-            return ['O', 'X']
+    if letter == 'X':
+        return ['X', 'O']
+    else:
+        return ['O', 'X']
 def whoGoesFirst():
     if random.randint(0,1) == 0:
         return 'computer'
@@ -75,7 +75,7 @@ def getComputerMove(board, computerLetter):
                 return i
     for i in range(1,10):
         boardCopy = getBoardCopy(board)
-        if isSpaceFree(boardcopy, i):
+        if isSpaceFree(boardCopy, i):
             makeMove(boardCopy, playerLetter, i)
             if isWinner(boardCopy, playerLetter):
                 return i
