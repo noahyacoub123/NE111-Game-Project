@@ -3,13 +3,13 @@ import random  #Importing the random module -NY
 def drawBoard(board):
     #This function will 'draw' the game board as a list of 16 (4x4) instead of the usual 9 (3x3) -NY
     #this function takes a list 'board' with 16 strings that correspond to a four by four grid and prints it, including dividers, to create a visual board drawing for the tictactoe board -AP
-    print(board[13]) + '|' + print(board[14]) +'|' + print(board[15]) + '|' + print(board[16])
+    print(board[13] + ' |' + board[14] + ' |' + board[15] + ' |' + board[16])
     print('_______')  #Just a horizontal line to separate the rows and make it look a little cleaner -NY
-    print(board[9]) + '|' + print(board[10]) + '|' + print(board[11]) + '|' + print(board[12])
+    print(board[9] + ' |' + board[10] + ' |' + board[11] + ' |' + board[12])
     print('_______')
-    print(board[5]) + '|' + print(board[6]) + '|' + print(board[7]) + '|' + print(board[8])
+    print(board[5] + ' |' + board[6] + ' |' + board[7] + ' |' + board[8])
     print('_______')
-    print(board[1]) + '|' + print(board[2]) + '|' + print(board[3]) + '|' + print(board[4])
+    print(board[1] + ' |' + board[2] + ' |' + board[3] + ' |' + board[4])
 
 def InputPlayerLetter():
     #This function will let the player choose which letter they want to be in the game, then choosing the computers letter based on that
@@ -72,9 +72,16 @@ def getComputerMove(board, computerLetter): #Verifies that the players chosen le
     for i in range(1, 17):
         boardCopy = getBoardCopy(board)
         if isSpaceFree(boardCopy, i):
-            makeMove(boardCopy, i)
+            makeMove(boardCopy, computerLetter, i)
             if isWinner(boardCopy, playerLetter):
                 return i
+    for i in range(1, 17):
+        boardCopy = getBoardCopy(board)
+        if isSpaceFree(boardCopy, i):
+            makeMove(boardCopy, playerLetter, i)
+            if isWinner(boardCopy, playerLetter):
+                return i
+
     move = chooseRandomMoveFromList(board, [1, 4, 13, 16])
     if move != None:
         return move
@@ -92,7 +99,7 @@ def isBoardFull(board):
 print("Welcome to Tic-Tac-Toe, Player!")
 
 while True:
-    theBoard = ['']*10
+    theBoard = ['']*17
     playerLetter, computerLetter = InputPlayerLetter()
     turn = whoGoesFirst()
     print("The" + turn + "will go first!")
