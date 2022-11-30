@@ -29,7 +29,7 @@ def makeMove(board,letter,move):
 
         return 'player'
 
-def makeMove(board, letter, move):
+def makeMove(board,letter,move):
     board[move] = letter
 
 def isWinner(bo, le):

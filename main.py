@@ -18,10 +18,10 @@ def InputPlayerLetter():
     while not (letter == 'X' or letter == 'O'):
         print("Hello player, do you want to be X or O? ")
         letter = input().upper() #making sure that the letter chosen will be an upper case letter for simplicity
-        if letter == "X":
-            return ["X", "O"]
-        else:
-            return ["O", "X"] #Players letter will be shown as the first index and the computer will be the second
+    if letter == "X":
+        return ["X", "O"]
+    else:
+        return ["O", "X"] #Players letter will be shown as the first index and the computer will be the second
 
 def whoGoesFirst():
     if random.randint(0, 1) == 0:
@@ -94,7 +94,7 @@ def isBoardFull(board):
     for i in range(1, 17):
         if isSpaceFree(board, i):
             return False
-        return True
+    return True
 
 print("Welcome to Tic-Tac-Toe, Player!")
 
@@ -112,6 +112,7 @@ while True:
 
             if isWinner(theBoard, playerLetter):
                 drawBoard(theBoard)
+                print('Hooray! You have won the game!')
                 gameIsPlaying = False
             else:
                 if isBoardFull(theBoard):
@@ -126,10 +127,15 @@ while True:
 
             if isWinner(theBoard, computerLetter):
                  drawBoard(theBoard)
-                 print("The computer wins! Better luck next time!")
+                 print("The computer has beaten you! You lose!")
                  gameIsPlaying = False
             else:
-                turn = 'player'
+                if isBoardFull(theBoard):
+                    drawBoard(theBoard)
+                    print('The game is a tie!')
+                    break
+                else:
+                    turn = 'player'
     print("Do you want to play again? (yes or no)")
     if not input().lower().startswith("y"):
         break
