@@ -102,7 +102,7 @@ while True:
     theBoard = ['']*17
     playerLetter, computerLetter = InputPlayerLetter()
     turn = whoGoesFirst()
-    print("The" + turn + "will go first!")
+    print("The " + turn + " will go first!")
     gameIsPlaying = True
     while gameIsPlaying:
         if turn == 'player':
