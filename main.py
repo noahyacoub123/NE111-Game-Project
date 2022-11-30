@@ -95,7 +95,7 @@ print("Welcome to Tic-Tac-Toe, Player!")
 
 while True:
     theBoard = ['']*10
-    playerLetter, computerLetter = inputPlayerLetter()
+    playerLetter, computerLetter = InputPlayerLetter()
     turn = whoGoesFirst()
     print("The" + turn + "will go first!")
     gameIsPlaying = True
