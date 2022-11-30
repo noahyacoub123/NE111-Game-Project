@@ -1,5 +1,4 @@
 # Initials for who did what, Edward Hong as EH, Alden Panicker as AP, and Noah Yacoub as NY -NY
-import pygame  #importing the pygame module -NY
 import random  #Importing the random module -NY
 def drawBoard(board):
     #This function will 'draw' the game board as a list of 16 (4x4) instead of the usual 9 (3x3) -NY
@@ -59,6 +58,10 @@ def getBoardCopy(board):
     for i in board:
         boardCopy.append(i)
     return boardCopy
+
+def isSpaceFree(board, move):
+    return board[move] == ''
+
 #Now it's time to code the artificial intelligence for our game, which will be split up in sections among the three of us -NY
 def getComputerMove(board, computerLetter): #Verifies that the players chosen letter will be the opposite of the computer -NY
     if computerLetter == "X":
