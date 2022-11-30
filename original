@@ -1,0 +1,4 @@
+import pygame  #importing the pygame module -NY
+import random  #Importing the random module -NY
+
+def drawBoard(board):
