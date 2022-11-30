@@ -14,7 +14,7 @@ def gameboard_drawing(board):
 
 def InputPlayerLetter():
     #This function will let the player choose which letter they want to be in the game, then choosing the computers letter based on that
-    #
+
     letter = "" #Initializing the letter variable
     while not (letter == "X" or letter == "O"):
         print("Hello player, do you want to be X or O? ")
@@ -23,6 +23,15 @@ def InputPlayerLetter():
             return ["X", "O"]
         else:
             return ["O", "X"] #Players letter will be shown as the first index and the computer will be the second
+
+def whoGoesFirst():
+    if random.randint(0, 1) == 0:
+        return 'computer'
+    else:
+        return 'player'
+
+def makeMove(board, letter, move):
+    board[move] = letter
 
 def getPlayerMove(board):
     move = ''
