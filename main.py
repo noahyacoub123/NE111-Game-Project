@@ -68,3 +68,68 @@ def chooseRandomMoveFromList(board,movesList):
 
 def isWinner(bo, le): #Checks if the player or computer has placed three X's or O's in a row, winning the game. Checks every single case for this -NY and EH
     return ((bo[1] == le and bo[2] == le and bo[3] == le) or (bo[2] == le and bo[3] == le and bo[4] == le) or (bo[5] == le and bo[6] == le and bo[7] == le) or (bo[6] == le and bo[7] == le and bo[8] == le) or (bo[9] == le and bo[10] == le and bo[11] == le) or (bo[10] == le and bo[11] == le and bo[12] == le) or (bo[13] == le and bo[14] == le and bo[15] == le) or (bo[14] == le and bo[15] == le and bo[16] == le) or (bo[1] == le and bo[5] == le and bo[9] == le) or (bo[5] == le and bo[9] == le and bo[13] == le) or (bo[2] == le and bo[6] == le and bo[10] == le) or (bo[6] == le and bo[10] == le and bo[14] == le) or (bo[3] == le and bo[7] == le and bo[11] == le) or (bo[7] == le and bo[11] == le and bo[15] == le) or (bo[4] == le and bo[8] == le and bo[12] == le) or (bo[8] == le and bo[12] == le and bo[16] == le) or (bo[3] == le and bo[6] == le and bo[9] == le) or (bo[4] == le and bo[7] == le and bo[10] == le) or (bo[7] == le and bo[10] == le and bo[13] == le) or (bo[8] == le and bo[11] == le and bo[14] == le) or (bo[2] == le and bo[7] == le and bo[12] == le) or (bo[1] == le and bo[6] == le and bo[11] == le) or (bo[6] == le and bo[11] == le and bo[16] == le) or (bo[5] == le and bo[10] == le and bo[15] == le))
+
+#Now it's time to code the artificial intelligence for our game, which will be split up in sections among the three of us -NY
+
+for i in range(1, 17):
+    boardCopy = getBoardCopy(board)
+    if isSpaceFree(boardCopy, i):
+        makeMove(boardCopy, i)
+        if isWinner(boardCopy, playerLetter):
+            return i
+move = chooseRandomMoveFromList(board, [1, 4, 13, 16])
+if move != None:
+    return move
+
+#No center so cannot have computer put X or O there
+
+return chooseRandomMoveFromList(board, [2, 3, 5, 9, 14, 15, 8, 12, 6, 7, 10, 11])
+
+def isBoardFull(board):
+    for i in range(1, 17):
+        if isSpaceFree(board, i):
+            return False
+        return True
+
+print("Welcome to Tic-Tac-Toe, Player!")
+
+while True:
+    theBoard = ['']*10
+    playerLetter, computerLetter = inputPlayerletter()
+    turn = whoGoesFirst()
+    print("The" + turn + "will go first!")
+    gameIsPlaying = True
+    while gameIsPlaying:
+        if turn == 'player':
+            drawBoard(theBoard)
+            move = getPlayerMove(theBoard)
+            makeMove(theBoard, playerLetter, move)
+
+            if isWinner(theBoard, playerLetter):
+                drawBoard(theBoard)
+                gameIsPlaying = False
+            else:
+                if isBoardFull(theBoard):
+                    drawBoard(theBoard)
+                    print("The game is a tie!")
+                    break
+                else:
+                    turn = 'computer'
+            else:
+                move = getComputerMove(theBoard, computerLetter)
+                makeMove(theBoard, computerLetter, move)
+
+                if isWinner(theBoard, computerLetter):
+                    drawBoard(theBoard)
+                    print("The computer wins! Better luck next time!")
+                    gameIsPlaying = False
+                else:
+                    turn = 'player'
+        print("Do you want to play again? (yes or no)")
+        if not input().lower().startswith("y"):
+            break
+
+
+
+
+
