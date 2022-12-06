@@ -5,7 +5,7 @@ def drawBoard(board):
     #This function will 'draw' the game board as a list of 16 (4x4) instead of the usual 9 (3x3) -NY
     #this function takes a list 'board' with 16 strings that correspond to a four by four grid and prints it, including dividers, to create a visual board drawing for the tictactoe board -AP
     print(board[13] + ' |' + board[14] + ' |' + board[15] + ' |' + board[16])
-    print('_______')  #Just a horizontal line to separate the rows and make it look a little cleaner -NY
+    print('_______')  #Just a horizontal line to separate the rows and make it look a little cleaner, slightly different from the originals interpretation -NY
     print(board[9] + ' |' + board[10] + ' |' + board[11] + ' |' + board[12])
     print('_______')
     print(board[5] + ' |' + board[6] + ' |' + board[7] + ' |' + board[8])
@@ -109,7 +109,7 @@ print("Welcome to Tic-Tac-Toe, Player!\nHere are some rules we would like you to
 
 #prints out a random dialogue from a pool of options - EH
 def dialogueFirst(turn):
-    if turn == 'computer':
+    if turn == 'computer': #Dialogue options corresponding to the computer going first -NY
         if random.randint(0, 3) == 0:
             return "Computer goes first!"
         elif random.randint(0, 3) == 1:
@@ -119,7 +119,7 @@ def dialogueFirst(turn):
         elif random.randint(0, 3) == 3:
             return "Beep-boop, you're up, computer!"
     else:
-        if random.randint(4, 6) == 4:
+        if random.randint(4, 6) == 4: #Dialogue options if the player is the first move -NY
             return "Player goes first!"
         elif random.randint(4, 6) == 5:
             return "Player, show us what you got!"
