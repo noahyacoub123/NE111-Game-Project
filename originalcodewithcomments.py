@@ -60,7 +60,7 @@ def chooseRandomMoveFromList(board, movesList):
     for i in movesList: #This loop calls the function isSpaceFree to check all the possible spaces that are available for the computer to go to, then adds them to a list that will later be referenced -NY
         if isSpaceFree(board, i):
             possibleMoves.append(i)
-    if len(possibleMoves) != 0:
+    if len(possibleMoves) != 0: #Checks if there are actually available moves, if there are, randomly chooses one from the list of possible moves -NY
         return random.choice(possibleMoves)
     else:
         return None
@@ -94,20 +94,20 @@ def getComputerMove(board, computerLetter): #function for choosing a move for th
 # above lines first check if the corners of the board are empty, if they are, it checks the center, finally it will pick whatever is remaining if it cannot get the corner or center. A.P
 def isBoardFull(board):
     #this function checks to ensure that all of the board is not taken by letters. A.P
-    for i in range(1, 10):
+    for i in range(1, 10): #This loop calls the isSpaceFree function and checks each position to see if there are empty slots, if there are, returns False, but if there are no slots available, returns True
         if isSpaceFree(board, i):
             return False
     return True
 
 print('Welcome to Tic-Tac-Toe!') #functions have all been created so this line prints the starting sentence. A.P
 
-while True:
+while True: #This is the start of the game, from here-on, all of the code is just instructions for the game and player -NY
     theBoard = [' '] * 10 #Prints 10 empty lists to later append the moves into -NY
     playerLetter, computerLetter = inputPlayerLetter()
     turn = whoGoesFirst() #Calling the function whoGoesFirst to let the player know whos turn it is -NY
     #some variables for the board, computer and players letters as well as who's turn it is are initialized. A.P
     print('The ' + turn + ' will go first.')
-    gameIsPlaying = True
+    gameIsPlaying = True #Lets our later code know that the game is actually running -NY
     #this variable starts the game as the following loop will run only when it is true and when it is false the code wont run. A.P
 
     while gameIsPlaying:
