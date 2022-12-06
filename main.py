@@ -113,7 +113,7 @@ def dialogueFirst(turn):
         if random.randint(0, 3) == 0:
             return "Computer goes first!"
         elif random.randint(0, 3) == 1:
-            return "00100011 00110001"
+            return "Computer goes 00100011 00110001! (#1)"
         elif random.randint(0, 3) == 2:
             return "Computer, make us proud!"
         elif random.randint(0, 3) == 3:
