@@ -104,39 +104,51 @@ while True:
     theBoard = [' '] * 10
     playerLetter, computerLetter = inputPlayerLetter()
     turn = whoGoesFirst()
+    #some variables for the board, computer and players letters as well as who's turn it is are initialized. A.P
     print('The ' + turn + ' will go first.')
     gameIsPlaying = True
+    #this variable starts the game as the following loop will run only when it is true and when it is false the code wont run. A.P
+
     while gameIsPlaying:
         if turn == 'player':
             drawBoard(theBoard)
             move = getPlayerMove(theBoard)
             makeMove(theBoard, playerLetter, move)
+            #if its the players turn, the board will be printed, the player will be asked for their move, and then the function to make the players move will be called. A.P
             if isWinner(theBoard, playerLetter):
                 drawBoard(theBoard)
                 print('Hooray! You have won the game!')
                 gameIsPlaying = False
+                #this checks if the player is a winner, if it is the board will be printed and a message will be sent to inform the player of thier win. The game will also stop running. A.P
             else:
                 if isBoardFull(theBoard):
                     drawBoard(theBoard)
                     print('The game is a tie!')
                     break
+                    #this checks if the board is full. if it is, then it will print that the game is a tie and stop the code. A.P
                 else:
                     turn = 'computer'
+                    #if not, it will become the computers turn to move. A.P
         else:
-
+#this all runs when its the computers turn A.P
             move = getComputerMove(theBoard, computerLetter)
             makeMove(theBoard, computerLetter, move)
+#makes a move for the computer A.P
             if isWinner(theBoard, computerLetter):
                 drawBoard(theBoard)
                 print('The computer has beaten you! You lose.')
                 gameIsPlaying = False
+                #checks if computer won. then prints message and ends game. A.P
             else:
                 if isBoardFull(theBoard):
                     drawBoard(theBoard)
                     print('The game is a tie!')
                     break
+                    #checks for a tie. then prints message and ends code. A.P
                 else:
                     turn = 'player'
+                    #if the board isnt full, it returns to being the players turn. A.P
     print('Do you want to play again? (yes or no)')
     if not input().lower().startswith('y'):
         break
+        #asks the player if they want to play again. as long as the answer starts with a y, the game will restart. if not the code will stop running. A.P
