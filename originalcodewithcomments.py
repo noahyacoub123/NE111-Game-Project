@@ -118,7 +118,7 @@ while True: #This is the start of the game, from here-on, all of the code is jus
             #if its the players turn, the board will be printed, the player will be asked for their move, and then the function to make the players move will be called. A.P
             if isWinner(theBoard, playerLetter):
                 drawBoard(theBoard)
-                print('Hooray! You have won the game!')
+                print('Hooray! You have won the game!') #If the conditions of the function isWinner are met (three slots in a row of the players letter, then a  statement is printed letting the player know of their victory -NY
                 gameIsPlaying = False
                 #this checks if the player is a winner, if it is the board will be printed and a message will be sent to inform the player of thier win. The game will also stop running. A.P
             else:
@@ -146,6 +146,7 @@ while True: #This is the start of the game, from here-on, all of the code is jus
                     print('The game is a tie!')
                     break
                     #checks for a tie. then prints message and ends code. A.P
+                    #Only a tie if the board is filled and there are no three-in-a-rows -NY
                 else:
                     turn = 'player'
                     #if the board isnt full, it returns to being the players turn. A.P
