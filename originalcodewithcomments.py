@@ -1,12 +1,12 @@
 
-import random  #Importing the random module -NY
+import random  #Importing the random module for later use in the code -NY
 
 
-#A.P are the initials of Alden Panicker
+#A.P are the initials of Alden Panicker, NY for Noah Yacoub, and EH for Edward Hong
 def drawBoard(board):
     #this code draws a tic tac toe 3x3 board by printing the indexes of a list and printing lines between them. A.P
-    print(board[7] + '|' + board[8] + '|' + board[9])
-    print('-+-+-')
+    print(board[7] + '|' + board[8] + '|' + board[9]) #The "|" printed is just a boundary to make the board look cleaner -NY
+    print('-+-+-') #This line does something similar to the last, prints a board bondary to make the look a little cleaner -NY
     print(board[4] + '|' + board[5] + '|' + board[6])
     print('-+-+-')
     print(board[1] + '|' + board[2] + '|' + board[3])
@@ -16,7 +16,7 @@ def inputPlayerLetter():
     #creates a variable to represent the letter 'X' or 'O' that the player can play as A.P
     while not (letter == 'X' or letter == 'O'): # this loop checks to make sure that the player can only choose between X or O to play as A.P
         print('Do you want to be X or O?')
-        letter = input().upper()
+        letter = input().upper() #Makes sure the letter chosen by the player is uppercase no matter what (to prevent issues later on when the chosen character needs to be called) -NY
     if letter == 'X':
         return ['X', 'O']
     else:
@@ -28,7 +28,7 @@ def whoGoesFirst():
     else:
         return 'player'
     #this function takes a random number between 0 and 1 to decide whether the computer or player will go first. A.P
-
+    #Number must be an integer since .randint is used, so there is a 50/50 chance for whoever will go first -NY
 def makeMove(board,letter,move):
     board[move] = letter
 #this function makes a move for the player by taking the list of 'board' (which corresponds to the nine empty spaces on the board) and the number from 1-9 which is the input by the player and setting it equal to the letter of the player. A.P
@@ -41,6 +41,7 @@ def getBoardCopy(board):
         boardCopy.append(i)
     return boardCopy
 #this function creates a copy of the board. A.P
+#This is because a new board will need to be printed each time a move is executed, it simply appends, or adds, the player or computers character into the board and then prints it again with the updated status _NY
 def isSpaceFree(board,move):
     return board[move] == ''
 #this function checks if the space on the board that the player wants to choose is empty or not as a boolean value. A.P
@@ -55,8 +56,8 @@ def getPlayerMove(board):
 
 def chooseRandomMoveFromList(board, movesList):
     # this function makes a list of the possible moves the computer can make by checking if each space on the board is empty. it then randomly chooses one choice. A.P
-    possibleMoves = []
-    for i in movesList:
+    possibleMoves = [] #Initializing the list so that the possible moves can be added to it for the computer later -NY
+    for i in movesList: #This loop calls the function isSpaceFree to check all the possible spaces that are available for the computer to go to, then adds them to a list that will later be referenced -NY
         if isSpaceFree(board, i):
             possibleMoves.append(i)
     if len(possibleMoves) != 0:
@@ -70,21 +71,21 @@ def getComputerMove(board, computerLetter): #function for choosing a move for th
     else:
         playerLetter = 'X'
 #sets playerLetter equal to whatever letter the computer is not
-    for i in range(1,10):
+    for i in range(1,10): #Since there are only 9 options of where to go on the board, and the range functions is exclusive in its second argument, it must be from 1-10 -NY
         boardCopy = getBoardCopy(board)
         if isSpaceFree(boardCopy, i):
             makeMove(boardCopy, computerLetter, i)
             if isWinner(boardCopy, computerLetter):
                 return i
             #the above lines check if a space is free to make a move, and if the computer is a winner A.P
-    for i in range(1,10):
+    for i in range(1,10): #Same as above, only 9 options and range is exclusive on its second argument -NY
         boardCopy = getBoardCopy(board)
         if isSpaceFree(boardCopy, i):
             makeMove(boardCopy, playerLetter, i)
             if isWinner(boardCopy, playerLetter):
                 return i
         # the above lines check if a space is free to make a move, and if the player is a winner A.P
-    move = chooseRandomMoveFromList(board, [1, 3, 7, 9])
+    move = chooseRandomMoveFromList(board, [1, 3, 7, 9]) #Since these are the corner values of the board, checks if those are free first (Since it gives the biggest strategic advantage) -NY
     if move!= None:
         return move
     if isSpaceFree(board, 5):
@@ -101,9 +102,9 @@ def isBoardFull(board):
 print('Welcome to Tic-Tac-Toe!') #functions have all been created so this line prints the starting sentence. A.P
 
 while True:
-    theBoard = [' '] * 10
+    theBoard = [' '] * 10 #Prints 10 empty lists to later append the moves into -NY
     playerLetter, computerLetter = inputPlayerLetter()
-    turn = whoGoesFirst()
+    turn = whoGoesFirst() #Calling the function whoGoesFirst to let the player know whos turn it is -NY
     #some variables for the board, computer and players letters as well as who's turn it is are initialized. A.P
     print('The ' + turn + ' will go first.')
     gameIsPlaying = True
