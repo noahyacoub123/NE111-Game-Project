@@ -34,7 +34,7 @@ def makeMove(board, letter, move):
 
 def getPlayerMove(board):
     move = ''
-    while move not in '1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16'.split() or not isSpaceFree(board, int(move)):
+    while move not in '1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16'.split() or not isSpaceFree(board, int(move)): #Since there is a bigger board, needs to be more available moves so now goes from 1-16 instead of 1-9 -NY
         print("What is your next move? (1-16)")
         move = input()
     return int(move)
@@ -69,7 +69,7 @@ def getComputerMove(board, computerLetter): #Verifies that the players chosen le
     else:
         playerLetter == "X"
 
-    for i in range(1, 17):
+    for i in range(1, 17): #Like with the original code, the second argument of the range function is exclusive so tho there are only 16 spaces, need to write 17 since its not counted -NY
         boardCopy = getBoardCopy(board)
         if isSpaceFree(boardCopy, i):
             makeMove(boardCopy, computerLetter, i)
@@ -99,7 +99,7 @@ def isBoardFull(board):
 print("Welcome to Tic-Tac-Toe, Player!")
 
 while True:
-    theBoard = ['']*17
+    theBoard = ['']*17 #Needs to be larger again, since the board is larger -NY
     playerLetter, computerLetter = InputPlayerLetter()
     turn = whoGoesFirst()
     print("The " + turn + " will go first!")
