@@ -35,6 +35,8 @@ def makeMove(board,letter,move):
 def isWinner(bo, le):
     return ((bo[7] == le and bo[8] == le and bo[9] == le) or (bo[4] == le and bo[5] == le and bo[6] == le) or (bo[1] == le and bo[2] == le and bo[3] == le) or (bo[7] == le and bo[4] == le and bo[1] == le) or (bo[8] == le and bo[5] == le and bo[2] == le) or (bo[9] == le and bo[6] == le and bo[3] == le) or (bo[7] == le and bo[5] == le and bo[3] == le) or (bo[9] == le and bo[5] == le and bo[1] == le))
 #this function returns true if either the player or computer have three spaces of the same letter in a line. checks if there is a winner to the game. A.P
+
+#gets an empty copy of the board - EH
 def getBoardCopy(board):
     boardCopy = []
     for i in board:
@@ -61,7 +63,7 @@ def chooseRandomMoveFromList(board, movesList):
         if isSpaceFree(board, i):
             possibleMoves.append(i)
     if len(possibleMoves) != 0: #Checks if there are actually available moves, if there are, randomly chooses one from the list of possible moves -NY
-        return random.choice(possibleMoves)
+        return random.choice(possibleMoves) #returns random move for the computer - EH
     else:
         return None
 
@@ -73,23 +75,23 @@ def getComputerMove(board, computerLetter): #function for choosing a move for th
 #sets playerLetter equal to whatever letter the computer is not -NY
     for i in range(1,10): #Since there are only 9 options of where to go on the board, and the range functions is exclusive in its second argument, it must be from 1-10 -NY
         boardCopy = getBoardCopy(board)
-        if isSpaceFree(boardCopy, i):
+        if isSpaceFree(boardCopy, i): #Checks is isSpaceFree function is True - EH
             makeMove(boardCopy, computerLetter, i)
             if isWinner(boardCopy, computerLetter):
                 return i
             #the above lines check if a space is free to make a move, and if the computer is a winner A.P
     for i in range(1,10): #Same as above, only 9 options and range is exclusive on its second argument -NY
         boardCopy = getBoardCopy(board)
-        if isSpaceFree(boardCopy, i):
-            makeMove(boardCopy, playerLetter, i)
-            if isWinner(boardCopy, playerLetter):
-                return i
+        if isSpaceFree(boardCopy, i): #looks at if the space is free by taking in the copy of the board - EH
+            makeMove(boardCopy, playerLetter, i)    #Executes makeMove function if there are free spaces - EH
+            if isWinner(boardCopy, playerLetter):   #checks if isWinner function returns true - EH
+                return i    #returns the option that complies with the above conditions - EH
         # the above lines check if a space is free to make a move, and if the player is a winner A.P
     move = chooseRandomMoveFromList(board, [1, 3, 7, 9]) #Since these are the corner values of the board, checks if those are free first (Since it gives the biggest strategic advantage) -NY
     if move!= None:
         return move
-    if isSpaceFree(board, 5):
-        return 5
+    if isSpaceFree(board, 5):   # if the isSpaceFree is true: - EH
+        return 5    # it returns 5 - EH
     return chooseRandomMoveFromList(board, [2, 4, 6, 8])
 # above lines first check if the corners of the board are empty, if they are, it checks the center, finally it will pick whatever is remaining if it cannot get the corner or center. A.P
 def isBoardFull(board):
@@ -110,11 +112,12 @@ while True: #This is the start of the game, from here-on, all of the code is jus
     gameIsPlaying = True #Lets our later code know that the game is actually running -NY
     #this variable starts the game as the following loop will run only when it is true and when it is false the code wont run. A.P
 
+#this is where all the functions and variables comes into play, while the player decides to run the game, it runs all the necessary codes to do so - EH
     while gameIsPlaying:
         if turn == 'player':
-            drawBoard(theBoard)
-            move = getPlayerMove(theBoard)
-            makeMove(theBoard, playerLetter, move)
+            drawBoard(theBoard)     #"draws" the game board - EH
+            move = getPlayerMove(theBoard)  #the variable move will be assigned to the same value (boolean) as the getComputerMove function - EH
+            makeMove(theBoard, playerLetter, move)  #the variable move will be assigned to the same value (boolean) as the getComputerMove function - EH
             #if its the players turn, the board will be printed, the player will be asked for their move, and then the function to make the players move will be called. A.P
             if isWinner(theBoard, playerLetter):
                 drawBoard(theBoard)
@@ -132,16 +135,16 @@ while True: #This is the start of the game, from here-on, all of the code is jus
                     #if not, it will become the computers turn to move. A.P
         else:
 #this all runs when its the computers turn A.P
-            move = getComputerMove(theBoard, computerLetter)
-            makeMove(theBoard, computerLetter, move)
+            move = getComputerMove(theBoard, computerLetter)    #the variable move will be assigned to the same value (boolean) as the getComputerMove function - EH
+            makeMove(theBoard, computerLetter, move)    #the variable makeMove will be assigned to the same value (boolean) as the makeMove function -EH
 #makes a move for the computer A.P
-            if isWinner(theBoard, computerLetter):
+            if isWinner(theBoard, computerLetter): #Checks is isWinner function is true - EH
                 drawBoard(theBoard)
                 print('The computer has beaten you! You lose.')
                 gameIsPlaying = False #Tells python that the game has ended
                 #checks if computer won. then prints message and ends game. A.P
             else:
-                if isBoardFull(theBoard):
+                if isBoardFull(theBoard): #Checks if the boardfull function is true - EH
                     drawBoard(theBoard)
                     print('The game is a tie!')
                     break
