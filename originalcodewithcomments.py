@@ -1,5 +1,5 @@
 
-import random  #Importing the random module for later use in the code -NY
+import random  #Importing the 'random' library for later use in the code -NY
 
 
 #A.P are the initials of Alden Panicker, NY for Noah Yacoub, and EH for Edward Hong
@@ -7,7 +7,7 @@ def drawBoard(board):
     #this code draws a tic tac toe 3x3 board by printing the indexes of a list and printing lines between them. A.P
     print(board[7] + '|' + board[8] + '|' + board[9]) #The "|" printed is just a boundary to make the board look cleaner -NY
     print('-+-+-') #This line does something similar to the last, prints a board bondary to make the look a little cleaner -NY
-    print(board[4] + '|' + board[5] + '|' + board[6])
+    print(board[4] + '|' + board[5] + '|' + board[6]) #The following lines do the same as above -NY
     print('-+-+-')
     print(board[1] + '|' + board[2] + '|' + board[3])
 
@@ -15,7 +15,7 @@ def inputPlayerLetter():
     letter = ''
     #creates a variable to represent the letter 'X' or 'O' that the player can play as A.P
     while not (letter == 'X' or letter == 'O'): # this loop checks to make sure that the player can only choose between X or O to play as A.P
-        print('Do you want to be X or O?')
+        print('Do you want to be X or O?') #Prompts the player to pick an X or and O, probably the most important part of the code -NY
         letter = input().upper() #Makes sure the letter chosen by the player is uppercase no matter what (to prevent issues later on when the chosen character needs to be called) -NY
     if letter == 'X':
         return ['X', 'O']
@@ -70,7 +70,7 @@ def getComputerMove(board, computerLetter): #function for choosing a move for th
         playerLetter = 'O'
     else:
         playerLetter = 'X'
-#sets playerLetter equal to whatever letter the computer is not
+#sets playerLetter equal to whatever letter the computer is not -NY
     for i in range(1,10): #Since there are only 9 options of where to go on the board, and the range functions is exclusive in its second argument, it must be from 1-10 -NY
         boardCopy = getBoardCopy(board)
         if isSpaceFree(boardCopy, i):
@@ -106,7 +106,7 @@ while True: #This is the start of the game, from here-on, all of the code is jus
     playerLetter, computerLetter = inputPlayerLetter()
     turn = whoGoesFirst() #Calling the function whoGoesFirst to let the player know whos turn it is -NY
     #some variables for the board, computer and players letters as well as who's turn it is are initialized. A.P
-    print('The ' + turn + ' will go first.')
+    print('The ' + turn + ' will go first.') #lets the player know who is going first via a concatenation -NY
     gameIsPlaying = True #Lets our later code know that the game is actually running -NY
     #this variable starts the game as the following loop will run only when it is true and when it is false the code wont run. A.P
 
@@ -138,7 +138,7 @@ while True: #This is the start of the game, from here-on, all of the code is jus
             if isWinner(theBoard, computerLetter):
                 drawBoard(theBoard)
                 print('The computer has beaten you! You lose.')
-                gameIsPlaying = False
+                gameIsPlaying = False #Tells python that the game has ended
                 #checks if computer won. then prints message and ends game. A.P
             else:
                 if isBoardFull(theBoard):
