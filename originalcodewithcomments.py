@@ -153,7 +153,7 @@ while True: #This is the start of the game, from here-on, all of the code is jus
                 else:
                     turn = 'player'
                     #if the board isnt full, it returns to being the players turn. A.P
-    print('Do you want to play again? (yes or no)')
+    print('Do you want to play again? (yes or no)') #Once the game is done, prompts the user to play again -NY
     if not input().lower().startswith('y'):
         break
         #asks the player if they want to play again. as long as the answer starts with a y, the game will restart. if not the code will stop running. A.P
